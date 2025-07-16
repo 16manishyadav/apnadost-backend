@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 from typing import List, Dict
 from firebase_utils import verify_firebase_token
 import firebase_admin
-from firebase_admin import firestore
+from firebase_admin import firestore, auth
 import httpx
 import logging
 import traceback
