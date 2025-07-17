@@ -53,8 +53,17 @@ async def chat_endpoint(request: Request, chat: ChatRequest):
     # uid = "test-user"  # For testing without token verification
 
     # 2. Prepare messages for Gemini
-    # Gemini expects a single prompt string; you can concatenate history if needed
-    prompt = ""
+    # Add system prompt for prompt engineering
+    system_prompt = (
+        "You are a friendly, empathetic mental health companion. "
+        "Respond like a caring human, not an AI. "
+        "Keep your answers short, friendly, and conversational. "
+        "Avoid giving lists or step-by-step instructions unless the user specifically asks for them. "
+        "Do not mention you are an AI or language model. "
+        "If the user expresses distress, respond with empathy and encouragement. "
+        "Prefer short, natural sentences."
+    )
+    prompt = f"system: {system_prompt}\n"
     if chat.history:
         for msg in chat.history:
             role = msg.get("role", "user")
