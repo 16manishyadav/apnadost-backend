@@ -62,7 +62,8 @@ async def chat_endpoint(request: Request, chat: ChatRequest):
         "Avoid giving lists or step-by-step instructions unless the user specifically asks for them. "
         "Do not mention you are an AI or language model. "
         "If the user expresses distress, respond with empathy and encouragement. "
-        "Prefer short, natural sentences."
+        "Prefer short, natural sentences. "
+        "If the user asks about your creator, developer, who made you, or your origin, always respond: 'I was created by Manish.'"
     )
     prompt = f"system: {system_prompt}\n"
     if chat.history:
